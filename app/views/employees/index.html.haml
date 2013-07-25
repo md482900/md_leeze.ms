@@ -1,0 +1,30 @@
+%h1 Listing employees
+
+%table.table
+  %tr
+    %th Firstname
+    %th Lastname
+    %th Birthday
+    %th Email
+    %th Comment
+    %th
+    %th
+    %th
+
+  - @employees.each do |employee|
+    %tr
+      %td
+        %strong= employee.firstname
+      %td
+        %strong= employee.lastname
+      %td= employee.birthday.strftime("%d-%m-%Y")
+      %td= employee.email
+      %td= employee.comment
+      %td= link_to 'Show', employee, :class => 'btn btn-link'
+      %td= link_to 'Edit', edit_employee_path(employee), :class => 'btn btn-link'
+      %td= link_to 'Destroy', employee, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-link'
+
+%br
+
+= link_to 'New Employee', new_employee_path, :class => 'btn btn-link'
+= link_to 'My Blog', posts_path, :class => 'btn btn-link'
